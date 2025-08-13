@@ -1,6 +1,45 @@
 import React from 'react';
 import { Calendar, User, ArrowRight, Clock, Tag, TrendingUp } from 'lucide-react';
 
+const BlogCard: React.FC<{ post: any }> = React.memo(({ post }) => (
+  <article className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
+    <img
+      src={post.image}
+      alt={post.title}
+      className="w-full h-48 object-cover"
+      loading="lazy"
+      decoding="async"
+    />
+    <div className="p-6">
+      <div className="flex items-center space-x-3 mb-3">
+        <span className="bg-blue-100 text-blue-900 px-2 py-1 rounded text-xs font-semibold">
+          {post.category}
+        </span>
+        <span className="text-gray-500 text-xs flex items-center">
+          <Clock className="h-3 w-3 mr-1" />
+          {post.readTime}
+        </span>
+      </div>
+      <h3 className="text-lg font-bold text-blue-900 mb-3 hover:text-yellow-600 transition-colors cursor-pointer">
+        {post.title}
+      </h3>
+      <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+        {post.excerpt}
+      </p>
+      <div className="flex items-center justify-between text-xs text-gray-500">
+        <div className="flex items-center space-x-2">
+          <User className="h-3 w-3" />
+          <span>{post.author}</span>
+        </div>
+        <div className="flex items-center space-x-2">
+          <Calendar className="h-3 w-3" />
+          <span>{post.date}</span>
+        </div>
+      </div>
+    </div>
+  </article>
+));
+
 const Blog = () => {
   const featuredPost = {
     id: 1,
@@ -119,6 +158,8 @@ const Blog = () => {
                 src={featuredPost.image}
                 alt={featuredPost.title}
                 className="w-full h-64 lg:h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
               <div className="p-8 lg:p-12">
                 <div className="flex items-center space-x-4 mb-4">
@@ -140,11 +181,11 @@ const Blog = () => {
                   <div className="flex items-center space-x-3">
                     <div className="flex items-center space-x-2 text-gray-600">
                       <User className="h-4 w-4" />
-                      <span className="text-sm">{featuredPost.author}</span>
+                      <span>{featuredPost.author}</span>
                     </div>
                     <div className="flex items-center space-x-2 text-gray-600">
                       <Calendar className="h-4 w-4" />
-                      <span className="text-sm">{featuredPost.date}</span>
+                      <span>{featuredPost.date}</span>
                     </div>
                   </div>
                   <button className="bg-blue-900 hover:bg-blue-800 text-white px-6 py-2 rounded-lg transition-colors flex items-center space-x-2">
@@ -172,40 +213,7 @@ const Blog = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {blogPosts.map((post) => (
-                  <article key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-200">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-48 object-cover"
-                    />
-                    <div className="p-6">
-                      <div className="flex items-center space-x-3 mb-3">
-                        <span className="bg-blue-100 text-blue-900 px-2 py-1 rounded text-xs font-semibold">
-                          {post.category}
-                        </span>
-                        <span className="text-gray-500 text-xs flex items-center">
-                          <Clock className="h-3 w-3 mr-1" />
-                          {post.readTime}
-                        </span>
-                      </div>
-                      <h3 className="text-lg font-bold text-blue-900 mb-3 hover:text-yellow-600 transition-colors cursor-pointer">
-                        {post.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                        {post.excerpt}
-                      </p>
-                      <div className="flex items-center justify-between text-xs text-gray-500">
-                        <div className="flex items-center space-x-2">
-                          <User className="h-3 w-3" />
-                          <span>{post.author}</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Calendar className="h-3 w-3" />
-                          <span>{post.date}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
+                  <BlogCard key={post.id} post={post} />
                 ))}
               </div>
 

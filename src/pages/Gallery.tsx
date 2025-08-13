@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import { Play, X, Image as ImageIcon, Video, Users, Award } from 'lucide-react';
 
+type MediaItem = {
+  id: number;
+  type: 'image' | 'video';
+  category: 'training' | 'classroom' | 'events' | 'facility';
+  src: string;
+  title: string;
+  description: string;
+};
+
 const Gallery = () => {
-  const [selectedMedia, setSelectedMedia] = useState<any>(null);
+  const [selectedMedia, setSelectedMedia] = useState<MediaItem | null>(null);
   const [activeFilter, setActiveFilter] = useState('all');
 
-  const mediaItems = [
+  const mediaItems: MediaItem[] = [
     {
       id: 1,
       type: 'image',
@@ -116,7 +125,7 @@ const Gallery = () => {
     ? mediaItems 
     : mediaItems.filter(item => item.category === activeFilter);
 
-  const openModal = (item: any) => {
+  const openModal = (item: MediaItem) => {
     setSelectedMedia(item);
   };
 
@@ -194,6 +203,8 @@ const Gallery = () => {
                     src={item.src}
                     alt={item.title}
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-200"
+                    loading="lazy"
+                    decoding="async"
                   />
                   {item.type === 'video' && (
                     <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
@@ -230,6 +241,8 @@ const Gallery = () => {
                     src={`https://images.pexels.com/photos/892649${video}/pexels-photo-892649${video}.jpeg`}
                     alt={`Video ${video}`}
                     className="w-full h-48 object-cover"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer">
                     <Play className="h-16 w-16 text-white hover:text-yellow-500 transition-colors" />
@@ -259,6 +272,8 @@ const Gallery = () => {
               src={selectedMedia.src}
               alt={selectedMedia.title}
               className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+              loading="lazy"
+              decoding="async"
             />
             <div className="bg-white p-6 rounded-lg mt-4">
               <h3 className="text-xl font-bold text-blue-900 mb-2">{selectedMedia.title}</h3>
