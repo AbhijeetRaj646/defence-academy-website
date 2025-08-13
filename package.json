@@ -1,6 +1,7 @@
 {
   "name": "vite-react-typescript-starter",
   "private": true,
+  "homepage": "https://AbhijeetRaj646.github.io/defence-academy-website",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
