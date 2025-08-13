@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "NDA 2024 Exam Registration Open",
+    "message": "Registration for NDA 2024 exam is now open. Last date: 15th March 2024",
+    "urgent": true,
+    "date": "2024-02-20"
+  },
+  {
+    "id": 2,
+    "title": "New Batch Starting March 1st",
+    "message": "New comprehensive batch for CDS preparation starting from March 1st, 2024",
+    "urgent": false,
+    "date": "2024-02-18"
+  },
+  {
+    "id": 3,
+    "title": "Free Mock Test Available",
+    "message": "Free AFCAT mock test available for all registered students",
+    "urgent": false,
+    "date": "2024-02-15"
+  }
+]

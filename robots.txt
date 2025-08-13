@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://AbhijeetRaj646.github.io/defence-academy-website/sitemap.xml
