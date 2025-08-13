@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Clock, Users, BookOpen, Target, Check, Star, Calendar, Award } from 'lucide-react';
 
 const Courses = () => {
@@ -137,7 +137,9 @@ const Courses = () => {
     { id: 'integrated', name: 'Integrated' }
   ];
 
-  const filteredCourses = activeTab === 'all' ? courses : courses.filter(course => course.category === activeTab);
+  const filteredCourses = useMemo(() => (
+    activeTab === 'all' ? courses : courses.filter(course => course.category === activeTab)
+  ), [activeTab]);
 
   const features = [
     {
@@ -221,6 +223,8 @@ const Courses = () => {
                   src={course.image}
                   alt={course.title}
                   className="w-full h-48 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-blue-900 mb-2">{course.title}</h3>

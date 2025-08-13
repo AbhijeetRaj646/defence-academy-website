@@ -118,6 +118,8 @@ const About = () => {
                 src="https://images.pexels.com/photos/8926548/pexels-photo-8926548.jpeg"
                 alt="Training facility"
                 className="rounded-lg shadow-lg w-full h-64 object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -161,6 +163,8 @@ const About = () => {
                   src={member.image}
                   alt={member.name}
                   className="w-full h-64 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-blue-900 mb-2">{member.name}</h3>

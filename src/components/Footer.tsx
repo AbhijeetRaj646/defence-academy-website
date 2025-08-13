@@ -76,15 +76,15 @@ const Footer = () => {
 
             {/* Social Links */}
             <div className="flex space-x-4 mt-6">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" 
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
                  className="text-blue-200 hover:text-yellow-500 transition-colors">
                 <Linkedin className="h-6 w-6" />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
                  className="text-blue-200 hover:text-yellow-500 transition-colors">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" 
+              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
                  className="text-blue-200 hover:text-yellow-500 transition-colors">
                 <MessageCircle className="h-6 w-6" />
               </a>

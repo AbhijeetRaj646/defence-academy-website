@@ -2,6 +2,20 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Shield, Phone, Mail } from 'lucide-react';
 
+const routePrefetchers: Record<string, () => Promise<unknown>> = {
+  '/': () => import('../pages/Home'),
+  '/about': () => import('../pages/About'),
+  '/courses': () => import('../pages/Courses'),
+  '/gallery': () => import('../pages/Gallery'),
+  '/blog': () => import('../pages/Blog'),
+  '/contact': () => import('../pages/Contact'),
+};
+
+const prefetchRoute = (path: string) => {
+  const prefetch = routePrefetchers[path];
+  if (prefetch) prefetch();
+};
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -57,6 +71,7 @@ const Header = () => {
                 <Link
                   key={item.path}
                   to={item.path}
+                  onMouseEnter={() => prefetchRoute(item.path)}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
                     isActive(item.path)
                       ? 'bg-blue-900 text-white'
@@ -96,6 +111,7 @@ const Header = () => {
                 <Link
                   key={item.path}
                   to={item.path}
+                  onMouseEnter={() => prefetchRoute(item.path)}
                   onClick={() => setIsMenuOpen(false)}
                   className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
                     isActive(item.path)

@@ -92,6 +92,9 @@ const Home = () => {
                 src="https://images.pexels.com/photos/8926547/pexels-photo-8926547.jpeg"
                 alt="Defence Training"
                 className="rounded-lg shadow-2xl w-full h-96 object-cover"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
               />
               <div className="absolute -bottom-6 -left-6 bg-yellow-500 text-blue-900 p-6 rounded-lg shadow-lg">
                 <div className="text-2xl font-bold">85%</div>
@@ -127,6 +130,9 @@ const Home = () => {
                 src="https://images.pexels.com/photos/8926546/pexels-photo-8926546.jpeg"
                 alt="Academy Building"
                 className="rounded-lg shadow-lg w-full h-96 object-cover"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
               />
             </div>
             <div className="space-y-6">
@@ -188,6 +194,8 @@ const Home = () => {
                   src={course.image}
                   alt={course.title}
                   className="w-full h-48 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-blue-900 mb-2">{course.title}</h3>
@@ -238,6 +246,8 @@ const Home = () => {
                     src={testimonial.image}
                     alt={testimonial.name}
                     className="w-12 h-12 rounded-full mr-4 object-cover"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div>
                     <h4 className="font-semibold text-blue-900">{testimonial.name}</h4>
